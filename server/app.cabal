@@ -1,0 +1,89 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.2.
+--
+-- see: https://github.com/sol/hpack
+
+name:           app
+version:        1.0.0.0
+synopsis:       Functional implementation of both a multiway dataflow constraint systems engine in haskell, inspired by HotDrink, as well as an implementation of of my own interpretation of the WarmDrink specification.
+description:    Please see the README on GitHub at <https://github.com/boaanes/master#readme>
+category:       CLI
+homepage:       https://github.com/boaanes/master#readme
+bug-reports:    https://github.com/boaanes/master/issues
+author:         Bo Aanes
+maintainer:     boaanes@gmail.com
+copyright:      2022 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/boaanes/master
+
+library
+  exposed-modules:
+      WarmDrinkF
+      Agenda
+      CLI
+      Routes
+  other-modules:
+      Algs
+      AST
+      GraphHelpers
+      HotDrinkF
+      PrettyPrinter
+      TestData
+      Whap
+      Paths_app
+  hs-source-dirs:
+      src
+      src/examples
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      aeson
+    , algebraic-graphs
+    , base >=4.7 && <5
+    , containers
+    , http-types
+    , megaparsec
+    , mtl
+    , parsec
+    , parser-combinators
+    , safe
+    , scotty
+    , text
+    , time
+    , wai
+    , wai-cors
+  default-language: Haskell2010
+
+executable app-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_app
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N -O2
+  build-depends:
+      aeson
+    , algebraic-graphs
+    , app
+    , base >=4.7 && <5
+    , containers
+    , http-types
+    , megaparsec
+    , mtl
+    , parsec
+    , parser-combinators
+    , safe
+    , scotty
+    , text
+    , time
+    , wai
+    , wai-cors
+  default-language: Haskell2010
