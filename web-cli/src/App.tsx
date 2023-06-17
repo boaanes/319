@@ -13,8 +13,8 @@ import { Constraint, IComponent, Method, ResponseJSON } from "./types";
 import Component from "./components/Component";
 import Terminal from "./components/Terminal";
 import ScrollBox from "./components/ScrollBox";
-import { Fragment, useEffect, useState } from "react";
-import { prettyPrintMethod, stringToColor } from "./util";
+import { useEffect, useState } from "react";
+import { stringToColor } from "./util";
 import { postDefault } from "./api";
 import ConstraintDisplay from "./components/ConstraintDisplay";
 
