@@ -6,10 +6,6 @@ author:              "Bo Aanes"
 maintainer:          "boaanes@gmail.com"
 copyright:           "2022 Author name here"
 
-extra-source-files:
-- README.md
-- CHANGELOG.md
-
 # Metadata used when publishing your package
 synopsis:            Functional implementation of both a multiway dataflow constraint systems
                      engine in haskell, inspired by HotDrink, as well as an implementation of

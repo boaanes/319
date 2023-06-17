@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  react-app:
+    image: boaanes/319-react-app
+    ports:
+      - 80:80
+    depends_on: 
+      - haskell-server
+
+  haskell-server:
+    image: boaanes/319-haskell-server
+    ports:
+      - 8000:8000

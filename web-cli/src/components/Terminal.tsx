@@ -420,6 +420,7 @@ const Terminal = ({
             swap <compID> <compID> - Swap the given components
             rmv <compID> - Remove the given component
             highlight <identifier> - Highlight the element for the given identifier
+            reset - Reset highlights
             help - Display this help message`;
         break;
       }

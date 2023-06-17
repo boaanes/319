@@ -17,9 +17,6 @@ copyright:      2022 Author name here
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
-extra-source-files:
-    README.md
-    CHANGELOG.md
 
 source-repository head
   type: git
