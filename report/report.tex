@@ -1,0 +1,72 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{listings}
+\usepackage{color}
+
+\title{A Web Based Command Line Interface for Specifying Multiway Dataflow Constraint Systems}
+\author{Bo Aanes}
+\date{June 2023}
+\lstset{
+    frame=single,
+    basicstyle=\linespread{0.8}\footnotesize\ttfamily,
+    keywordstyle=\color{red},
+    numbers=left,
+    numbersep=5pt,
+    showstringspaces=false, 
+    stringstyle=\color{blue},
+    commentstyle=\color{gray},
+    breakatwhitespace=true,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{violet}{$\hookrightarrow$}\space},
+    tabsize=4,
+}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{\fill}
+    {\scshape\LARGE University of Bergen\par}
+    \vspace{1.5cm}
+    {\huge\bfseries A Web Based Command Line Interface for Specifying Multiway Dataflow Constraint Systems\par}
+    \vspace{2cm}
+    {\Large\itshape Bo Aanes\par}
+    \vfill
+    {\large \today\par}
+    \vspace{1cm}
+    {\large INF319 Project\par}
+    \vfill
+\end{titlepage}
+\tableofcontents
+\clearpage
+
+\section{Introduction}
+Graphical user interfaces (GUIs) are prevalent in most of today's technology that involves user interaction. However, developing and maintaining GUIs can still be difficult. Much of this is because as a GUI involves a larger set of state, the business logic neede in order to keep track of this state quickly becomes complex. This problem grows even bigger when we introduce dependencies between elements of the GUI. Multiway dataflow constraint systems (MDCS) is a programming model designed to let a developer specify dependencies between elements of the GUI using constraints \cite{semantics}. This is usually done declaratively and MDCS will handle all business logic related to these constraints. 
+
+\section{HotDrink}
+HotDrink is a JavaScript library for specifying multiway dataflow constraint systems \cite{hotdrink}. It provides both an API and a DSL for this purpose. Variables can be declared along with constraints between these, which in turn can be bound to specific HTML-elements. The constraints themselves contain \textit{methods} which can hold expressions or JavaScript functions that return values which are written to specified variables. In Listing \ref{lst:currencyhotdrink}, we can see how we can use HotDrink's API and DSL to define a constraint system to perform currency conversion between EUR and NOK.
+
+\begin{lstlisting}[language=java, caption={Currency conversion in HotDrink.}, label={lst:currencyhotdrink}]
+const constraintSystem = new ConstraintSystem();
+
+const component = component`
+    var exchangeRate = 10;
+    var eur = 0;
+    var nok = 0;
+
+    constraint {
+        eurToNok(eur, exchangeRate -> nok) = [eur * exchangeRate];
+        nokToEur(nok, exchangeRate -> eur) = [nok / exchangeRate];
+    }
+`;
+
+constraintSystem.addComponent(component);
+constraintSystem.update();
+\end{lstlisting}
+
+\clearpage
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{plain}
+\bibliography{generators/refs}
+
+\end{document}
