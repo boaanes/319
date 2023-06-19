@@ -33,3 +33,5 @@ Run docker compose:
 ```sh
 docker compose up
 ```
+
+Then go to [localhost](http://localhost) in your browser.
