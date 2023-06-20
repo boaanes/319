@@ -1,15 +1,13 @@
 import {
   Box,
   SimpleGrid,
-  Spacer,
   Text,
   Flex,
   Heading,
   VStack,
   useToast,
 } from "@chakra-ui/react";
-import Help from "./components/Help";
-import { Constraint, IComponent, Method, ResponseJSON } from "./types";
+import { Constraint, IComponent, ResponseJSON } from "./types";
 import Component from "./components/Component";
 import Terminal from "./components/Terminal";
 import ScrollBox from "./components/ScrollBox";
@@ -91,7 +89,13 @@ const App = () => {
       (constraints.length > 0 || intercalatingConstraints.length > 0)
     )
       enforceConstraints();
-  }, [components, constraints, intercalatingConstraints, enforceFromIndex]);
+  }, [
+    toast,
+    components,
+    constraints,
+    intercalatingConstraints,
+    enforceFromIndex,
+  ]);
 
   return (
     <Box bg="gray.800" h="100vh" p="0">
@@ -99,8 +103,6 @@ const App = () => {
         <Box bg="gray.700" p="5" shadow="md">
           <Flex>
             <Heading size="lg">HotDrink / WarmDrink CLI</Heading>
-            <Spacer />
-            <Help />
           </Flex>
         </Box>
       </header>
