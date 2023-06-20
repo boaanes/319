@@ -411,18 +411,33 @@ const Terminal = ({
         break;
       }
       case "help": {
-        response = `Commands:
-            addComp - Add a new component
-            addVar <varID> <value> - Add a new variable to all components
-            updVar <compID> <varID> <value> - Update the given variable
-            delVar <varID> - Delete the given variable
-            insAfter <compID> - Insert a new component after the given component
-            swap <compID> <compID> - Swap the given components
-            rmv <compID> - Remove the given component
-            highlight <identifier> - Highlight the element for the given identifier
-            reset - Reset highlights
-            help - Display this help message`;
-        break;
+        setHistory((prevHistory) => [
+          ...prevHistory,
+          formatInput(input),
+          formatResponse("Available commands:"),
+          formatResponse("newComp - Add a new component"),
+          formatResponse("newList <n> - Add a new list of size n"),
+          formatResponse(
+            "newVar <varID> <value> - Add a new variable to all components"
+          ),
+          formatResponse("newCtrn - Add a new constraint to all components"),
+          formatResponse("newIctrn - Add a new intercalating constraint"),
+          formatResponse(
+            "updVar <compID> <varID> <value> - Update the given variable"
+          ),
+          formatResponse("delVar <varID> - Delete the given variable"),
+          formatResponse(
+            "insAfter <compID> - Insert a new component after the given component"
+          ),
+          formatResponse("swap <compID> <compID> - Swap the given components"),
+          formatResponse("rmv <compID> - Remove the given component"),
+          formatResponse(
+            "highlight <identifier> - Highlight the element for the given identifier"
+          ),
+          formatResponse("reset - Reset highlights"),
+          formatResponse("help - Display this help message"),
+        ]);
+        return;
       }
       default: {
         response = "Invalid command";
