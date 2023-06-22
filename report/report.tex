@@ -211,7 +211,7 @@ The function then prevents the default behavior of the form, which is to reload 
 \label{sec:api}
 \subsection{Haskell API}
 \label{sec:haskellapi}
-To handle the algorithmic parts, mainly planning and solving of the constraint system, we have built an API in Haskell using a library called \textit{Scotty} \cite{scottyArticle, scottyHackage}. Scotty provides a minimal way of defining endpoints for HTTP requests. In Listing \ref{lst:scottyExample} we can see how a simple endpoint for a GET-request reponding with "Hello World" can be created. The function \texttt{main} calls the function \texttt{scotty} with two arguments, a port number for where to listen for requests, as well as a \texttt{ScottyM ()}\footnote{\url{https://hackage.haskell.org/package/scotty-0.12.1/docs/Web-Scotty.html\#t:ScottyM}}. The \texttt{ScottyM ()} is scotty's own monad for performing sequential operations. Within the outermost do-notation in Listing \ref{lst:scottyExample} we can list endpoints with their respective HTTP request types. In the example, we use the function \texttt{get} which takes two arguments, a route pattern ("/hello") and a \texttt{ActionM ()}. The \texttt{ActionM ()} is an action we want the server to perform, in this case return a raw text displaying "Hello World!".
+To handle the algorithmic parts, mainly planning and solving of the constraint system, we have built an API in Haskell using a library called \textit{Scotty} \cite{scottyArticle, scottyHackage}. Scotty provides a minimal way of defining endpoints for HTTP requests. In Listing \ref{lst:scottyExample} we can see how a simple endpoint for a GET-request reponding with "Hello World" can be created. The function \texttt{main} calls the function \texttt{scotty} with two arguments, a port number for where to listen for requests, as well as a \texttt{ScottyM ()}\footnote{\url{https://hackage.haskell.org/package/scotty-0.12.1/docs/Web-Scotty.html\#t:ScottyM}}. The \texttt{ScottyM ()} is Scotty's own monad for performing sequential operations. Within the outermost do-notation in Listing \ref{lst:scottyExample} we can list endpoints with their respective HTTP request types. In the example, we use the function \texttt{get} which takes two arguments, a route pattern ("/hello") and a \texttt{ActionM ()}. The \texttt{ActionM ()} is an action we want the server to perform, in this case return a raw text displaying "Hello World!".
 
 \begin{lstlisting}[language=haskell, caption={Example of a simple endpoint in Scotty.}, label={lst:scottyExample}]
 main = scotty 3000 $ do
@@ -237,7 +237,7 @@ data JSONVariable
 
 The language extensions \texttt{DeriveAnyClass} and \texttt{DeriveGeneric} are used to derive the \texttt{FromJSON} and \texttt{ToJSON} type classes. These type classes are derived automatically, which provide a parser and encoder without having to write these manually.
 
-Furthermore, we have defined data type for the API's input and output JSON types. As stated earler, the API recieves the state of the whole constraint system, and solves this before outputing the new values of each variable. Listing \ref{lst:IOtypes} shows how these data types are defined.
+Furthermore, we have defined data type for the API's input and output JSON types. As stated earler, the API receives the state of the whole constraint system, and solves this before outputing the new values of each variable. Listing \ref{lst:IOtypes} shows how these data types are defined.
 
 \begin{lstlisting}[language=haskell, caption={Input and output data types for the API.}, label={lst:IOtypes}]
 data Input
